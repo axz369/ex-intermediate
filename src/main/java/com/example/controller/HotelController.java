@@ -30,7 +30,7 @@ public class HotelController {
      */
     @GetMapping("/search")
     public String search(Model model){
-        return "hotel/search-clothe";
+        return "hotel/search";
     }
 
     /**
@@ -45,7 +45,7 @@ public class HotelController {
         List<Hotel> hotelList = hotelService.search(price);
         model.addAttribute("price",price);
         model.addAttribute("hotelList", hotelList);
-        return "hotel/search-clothe";
+        return "hotel/search";
     }
 
 }

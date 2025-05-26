@@ -28,6 +28,8 @@ public class ClotheService {
      * @return 服情報
      */
     public List<Clothe> findByGenderAndColor(Integer gender, String color){
+
+        System.out.println(clotheRepository.findByGenderAndColor(gender,color));
         return clotheRepository.findByGenderAndColor(gender,color);
     }
 }

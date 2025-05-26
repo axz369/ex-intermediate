@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Clothe;
+import com.example.form.ClothForm;
 import com.example.service.ClotheService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +29,11 @@ public class ClotheController {
      *
      * @return 検索画面
      */
-    @GetMapping("/search")
-    public String search(){
+    @GetMapping("/search-clothe")
+    public String search(Model model){
+        if (!model.containsAttribute("clotheForm")) {
+            model.addAttribute("clotheForm", new ClothForm());
+        }
         return "clothe/search-cloth";
     }
 
@@ -37,14 +41,14 @@ public class ClotheController {
     /**
      * 検索結果を出力する.
      *
-     * @param gender 性別
-     * @param color 色
-     * @return 検索結果
+     * @param form フォーム
      */
-    @PostMapping("search")
-    public String result(Integer gender, String color, Model model){
-        List<Clothe> clotheList = clotheService.findByGenderAndColor(gender,color);
-        model.addAttribute("clotheList",clotheList);
+    @PostMapping("/search-clothe")
+    public String result(ClothForm form, Model model){
+        List<Clothe> clotheList = clotheService.findByGenderAndColor(form.getGender(),form.getColor());
+        model.addAttribute("clotheList", clotheList);
+        model.addAttribute("clotheForm", form);  // ← ここを"clotheForm"に変更
         return "clothe/search-cloth";
     }
+
 }

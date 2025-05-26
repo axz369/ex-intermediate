@@ -5,19 +5,54 @@
     <title>Title</title>
   </head>
   <body>
-    <form th:action="@{/clothe/search-clothe}" method="post">
-      <label><input type="radio" name="gender" value="0" /> Man</label><br />
-      <label><input type="radio" name="gender" value="1" /> Woman</label><br />
+    <form
+      th:action="@{/clothe/search-clothe}"
+      th:object="${clotheForm}"
+      method="post"
+    >
+      <label> <input type="radio" th:field="*{gender}" value="0" /> Man </label
+      ><br />
+      <label>
+        <input type="radio" th:field="*{gender}" value="1" /> Woman </label
+      ><br />
 
-      <select name="prefecture">
-        <option value="red">赤</option>
-        <option value="blue">青</option>
-        <option value="while">白</option>
-        <option value="yellow">黄</option>
+      <select th:field="*{color}">
+        <option value="赤">赤</option>
+        <option value="青">青</option>
+        <option value="白">白</option>
+        <option value="黄">黄</option>
       </select>
 
       <br />
       <button>検索</button>
     </form>
+
+    <br />
+
+    <!-- 初回表示時に空だった時の表示が出ないようにするため -->
+    <div th:if="${clotheList}">
+      <!-- 空だった時 -->
+      <div th:if="${#lists.isEmpty(clotheList)}">
+        条件に一致する服がありませんでした
+      </div>
+
+      <div th:each="clothe : ${clotheList}">
+        <table border="1">
+          <tr>
+            <td>ジャンル</td>
+            <td th:text="${clothe.genre}"></td>
+          </tr>
+          <tr>
+            <td>サイズ</td>
+            <td th:text="${clothe.size}"></td>
+          </tr>
+          <tr>
+            <td>価格</td>
+            <td th:text="${clothe.price}"></td>
+          </tr>
+        </table>
+        <br />
+      </div>
+    </div>
   </body>
 </html>
