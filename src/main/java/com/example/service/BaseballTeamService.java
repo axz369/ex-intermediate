@@ -5,6 +5,7 @@ import com.example.repository.BaseballTeamRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.EmptyStackException;
 import java.util.List;
 
 /**
@@ -28,5 +29,16 @@ public class BaseballTeamService {
      */
     public List<BaseballTeam> showList(){
         return baseballTeamRepository.findAll();
+    }
+
+
+    /**
+     * 野球チーム情報を取得する.
+     *
+     * @param id ID
+     * @return 野球チーム情報
+     */
+    public BaseballTeam showDetail(Integer id){
+        return baseballTeamRepository.findById(id);
     }
 }

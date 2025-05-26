@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>野球チーム詳細</title>
+  </head>
+  <body>
+    <h1>野球チーム詳細</h1>
+
+    <h3>球団名</h3>
+    <p th:text="${baseballTeam.teamName}"></p>
+
+    <h3>本拠地</h3>
+    <p th:text="${baseballTeam.headquarters}"></p>
+
+    <h3>発足</h3>
+    <p th:text="${baseballTeam.inauguration}"></p>
+
+    <h3>歴史</h3>
+    <div id="history"></div>
+
+    <script th:inline="javascript">
+      // Thymeleaf変数をJS変数に渡す
+      let historyText = /*[[${baseballTeam.history}]]*/ "";
+
+      //\nを<br>に変換
+      document.getElementById("history").innerHTML = historyText.replace(
+        /\n/g,
+        "<br>"
+      );
+    </script>
+  </body>
+</html>

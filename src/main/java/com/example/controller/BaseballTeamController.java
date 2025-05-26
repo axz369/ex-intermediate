@@ -36,4 +36,12 @@ public class BaseballTeamController {
         model.addAttribute("baseballTeams",baseballTeams);
         return "baseballTeam/show-list";
     }
+
+    @GetMapping("/show-detail")
+    public String showDetail(String id, Model model){
+        BaseballTeam baseballTeam = baseballTeamService.showDetail(Integer.parseInt(id));
+
+        model.addAttribute("baseballTeam",baseballTeam);
+        return "baseballTeam/show-detail";
+    }
 }

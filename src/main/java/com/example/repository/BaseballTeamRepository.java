@@ -2,7 +2,9 @@ package com.example.repository;
 
 import com.example.domain.BaseballTeam;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,7 +22,8 @@ public class BaseballTeamRepository {
         baseballTeam.setId(rs.getInt("id"));
         baseballTeam.setLeagueName(rs.getString("league_name"));
         baseballTeam.setTeamName(rs.getString("team_name"));
-        baseballTeam.setHeadquarters(rs.getString("inauguration"));
+        baseballTeam.setHeadquarters(rs.getString("headquarters"));
+        baseballTeam.setInauguration(rs.getString("inauguration"));
         baseballTeam.setHistory(rs.getString("history"));
         return baseballTeam;
     };
@@ -47,5 +50,24 @@ public class BaseballTeamRepository {
                 """;
 
         return template.query(sql,BASEBALL_TEAM_ROW_MAPPER);
+    }
+
+
+    /**
+     * 主キーから野球チーム情報を取得する.
+     *
+     * @param id ID
+     * @return 野球チーム情報
+     */
+    public BaseballTeam findById(Integer id){
+        String sql = """
+                select
+                id,league_name,team_name,headquarters,inauguration,history
+                from teams
+                where id = :id
+                ;
+                """;
+        SqlParameterSource param = new MapSqlParameterSource().addValue("id",id);
+        return template.queryForObject(sql,param,BASEBALL_TEAM_ROW_MAPPER);
     }
 }
