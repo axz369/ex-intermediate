@@ -53,4 +53,21 @@ public class HotelRepository {
         SqlParameterSource param = new MapSqlParameterSource().addValue("price",price);
         return template.query(sql,param,HOTEL_ROW_MAPPER);
     }
+
+
+
+    /**
+     * ホテル一覧を取得する
+     *
+     * @return ホテル情報一覧
+     */
+    public List<Hotel> findAll(){
+        String sql = """
+                SELECT 
+                id,area_name,hotel_name,address,nearest_station,price,parking
+                FROM hotels
+                ;
+                """;
+        return template.query(sql,HOTEL_ROW_MAPPER);
+    }
 }

@@ -40,9 +40,11 @@ public class HotelController {
      * @param model モデル
      */
     @PostMapping("/search")
-    public void result(Integer price, Model model){
+    public String result(Integer price, Model model) {
         List<Hotel> hotelList = hotelService.search(price);
-        model.addAttribute("hotelList",hotelList);
-        search(model);
+        model.addAttribute("price",price);
+        model.addAttribute("hotelList", hotelList);
+        return "hotel/search";
     }
+
 }
