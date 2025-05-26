@@ -35,6 +35,13 @@ public class BaseballTeamController {
         return "baseballTeam/show-list";
     }
 
+    /**
+     * 野球チームの詳細画面を表示する.
+     *
+     * @param id ID
+     * @param model モデル
+     * @return 野球チームの詳細画面
+     */
     @GetMapping("/show-detail")
     public String showDetail(String id, Model model){
         BaseballTeam baseballTeam = baseballTeamService.showDetail(Integer.parseInt(id));

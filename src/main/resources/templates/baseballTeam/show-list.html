@@ -8,14 +8,14 @@
 <h1>野球チーム一覧</h1>
 
 <!-- 一件も存在しない場合 -->
-<p th:if="${#lists.isEmpty(baseballTeams)}">一軒も存在しません。</p>
+<p th:if="${#lists.isEmpty(baseballTeams)}">一件も存在しません。</p>
 
 <!-- チームがある場合はループ -->
-<div th:each="team : ${baseballTeams}" th:unless="${#lists.isEmpty(baseballTeams)}">
+<div th:each="baesballTeam : ${baseballTeams}" th:unless="${#lists.isEmpty(baseballTeams)}">
   <a
-          th:href="@{/baseballTeam/show-detail(id=${team.id})}"
+          th:href="@{/baseballTeam/show-detail(id=${baesballTeam.id})}"
   >
-    <p th:text="${team.teamName}"></p>
+    <p th:text="${baesballTeam.teamName}"></p>
   </a>
 </div>
 </body>
