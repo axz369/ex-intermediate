@@ -57,7 +57,7 @@ public class HotelRepository {
 
 
     /**
-     * ホテル一覧を取得する
+     * ホテル一覧を取得する.
      *
      * @return ホテル情報一覧
      */

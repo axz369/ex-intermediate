@@ -14,29 +14,28 @@
 
     <br />
 
-    <!-- 検索結果が存在する場合 -->
-    <div th:if="${hotelList}">
-      <div th:if="${#lists.isEmpty(hotelList)}">
-        <span th:text="${price}"></span>円以下のホテルはありません。
-      </div>
-      <div th:unless="${#lists.isEmpty(hotelList)}">
-        <div th:each="hotel : ${hotelList}">
-          <table border="1">
-            <tr>
-              <td>ホテル名</td>
-              <td th:text="${hotel.hotelName}">ホテル名</td>
-            </tr>
-            <tr>
-              <td>最寄り駅</td>
-              <td th:text="${hotel.nearestStation}">最寄り駅</td>
-            </tr>
-            <tr>
-              <td>価格</td>
-              <td th:text="${hotel.price}">価格</td>
-            </tr>
-          </table>
-          <br />
-        </div>
+    <!-- 空だった時 -->
+    <div th:if="${#lists.isEmpty(hotelList)}">
+      <span th:text="${price}"></span>円以下のホテルはありません。
+    </div>
+
+    <div th:unless="${#lists.isEmpty(hotelList)}">
+      <div th:each="hotel : ${hotelList}">
+        <table border="1">
+          <tr>
+            <td>ホテル名</td>
+            <td th:text="${hotel.hotelName}">ホテル名</td>
+          </tr>
+          <tr>
+            <td>最寄り駅</td>
+            <td th:text="${hotel.nearestStation}">最寄り駅</td>
+          </tr>
+          <tr>
+            <td>価格</td>
+            <td th:text="${hotel.price}">価格</td>
+          </tr>
+        </table>
+        <br />
       </div>
     </div>
   </body>
