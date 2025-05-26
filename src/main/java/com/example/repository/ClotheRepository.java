@@ -1,6 +1,5 @@
 package com.example.repository;
 
-import com.example.domain.BaseballTeam;
 import com.example.domain.Clothe;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

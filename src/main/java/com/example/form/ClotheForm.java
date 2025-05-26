@@ -1,6 +1,9 @@
 package com.example.form;
 
-public class ClothForm {
+/**
+ * 服のフォームクラス.
+ */
+public class ClotheForm {
     /** 性別 */
     private Integer gender;
 
