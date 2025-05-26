@@ -19,6 +19,12 @@
     <h3>歴史</h3>
     <div id="history"></div>
 
+    <br />
+
+    <a th:href="@{/baseballTeam/show-list}">
+      <button>戻る</button>
+    </a>
+
     <script th:inline="javascript">
       // Thymeleaf変数をJS変数に渡す
       let historyText = /*[[${baseballTeam.history}]]*/ "";
