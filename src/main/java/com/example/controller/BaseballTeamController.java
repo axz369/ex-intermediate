@@ -1,10 +1,8 @@
 package com.example.controller;
 
 import com.example.domain.BaseballTeam;
-import com.example.repository.BaseballTeamRepository;
 import com.example.service.BaseballTeamService;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +38,6 @@ public class BaseballTeamController {
     @GetMapping("/show-detail")
     public String showDetail(String id, Model model){
         BaseballTeam baseballTeam = baseballTeamService.showDetail(Integer.parseInt(id));
-
         model.addAttribute("baseballTeam",baseballTeam);
         return "baseballTeam/show-detail";
     }

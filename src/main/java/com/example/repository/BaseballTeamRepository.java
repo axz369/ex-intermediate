@@ -14,6 +14,7 @@ import java.util.List;
  */
 @Repository
 public class BaseballTeamRepository {
+
     /**
      * BaseballTeamオブジェクトを生成するローマッパー.
      */
@@ -56,7 +57,7 @@ public class BaseballTeamRepository {
     /**
      * 主キーから野球チーム情報を取得する.
      *
-     * @param id ID
+     * @param id 検索した野球チームのID
      * @return 野球チーム情報
      */
     public BaseballTeam findById(Integer id){
