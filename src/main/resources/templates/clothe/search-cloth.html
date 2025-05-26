@@ -11,7 +11,7 @@
       th:object="${clotheForm}"
       method="post"
     >
-      <div th:each="gender : ${genderMap}">
+      <div th:each="gender : ${application.genderMap}">
         <label>
           <input type="radio" th:field="*{gender}" th:value="${gender.key}" />
           <span th:text="${gender.value}">性別</span> </label
@@ -20,7 +20,7 @@
 
       <select th:field="*{color}">
         <option
-          th:each="color : ${colorMap}"
+          th:each="color : ${application.colorMap}"
           th:value="${color.key}"
           th:text="${color.value}"
         >
