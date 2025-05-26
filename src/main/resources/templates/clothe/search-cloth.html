@@ -11,17 +11,21 @@
       th:object="${clotheForm}"
       method="post"
     >
-      <label> <input type="radio" th:field="*{gender}" value="0" /> Man </label
-      ><br />
-      <label>
-        <input type="radio" th:field="*{gender}" value="1" /> Woman </label
-      ><br />
+      <div th:each="gender : ${genderMap}">
+        <label>
+          <input type="radio" th:field="*{gender}" th:value="${gender.key}" />
+          <span th:text="${gender.value}">性別</span> </label
+        ><br />
+      </div>
 
       <select th:field="*{color}">
-        <option value="赤">赤</option>
-        <option value="青">青</option>
-        <option value="白">白</option>
-        <option value="黄">黄</option>
+        <option
+          th:each="color : ${colorMap}"
+          th:value="${color.key}"
+          th:text="${color.value}"
+        >
+          色
+        </option>
       </select>
 
       <br />
