@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * 野球チームのテーブルを操作するリポジトリ.
+ * teamsテーブルを操作するリポジトリ.
  */
 @Repository
 public class BaseballTeamRepository {
@@ -32,12 +32,17 @@ public class BaseballTeamRepository {
     }
 
 
+    /**
+     * 野球チーム一覧を発足日順の昇順で取得.
+     *
+     * @return 野球チーム一覧 野球チームが存在しない場合はサイズ0の野球チーム一覧を返す
+     */
     public List<BaseballTeam> findAll(){
         String sql = """
                 select
                 id,league_name,team_name,headquarters,inauguration,history
-                from
-                teams
+                from teams
+                order by inauguration
                 ;
                 """;
 
