@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +29,7 @@ public class HotelController {
      * @return 検索画面
      */
     @GetMapping("/search")
-    public String search(){
+    public String search(Model model){
         return "hotel/search";
     }
 
@@ -39,12 +38,11 @@ public class HotelController {
      *
      * @param price 値段
      * @param model モデル
-     * @return 検索結果画面
      */
     @PostMapping("/search")
-    public String result(Integer price, Model model){
+    public void result(Integer price, Model model){
         List<Hotel> hotelList = hotelService.search(price);
         model.addAttribute("hotelList",hotelList);
-        return "hotel/search";
+        search(model);
     }
 }

@@ -21,6 +21,7 @@ public class HotelRepository {
     private static final RowMapper<Hotel> HOTEL_ROW_MAPPER = (rs, i) -> {
         Hotel hotel = new Hotel();
         hotel.setId(rs.getInt("id"));
+        hotel.setHotelName(rs.getString("hotel_name"));
         hotel.setAreaName(rs.getString("area_name"));
         hotel.setAddress(rs.getString("address"));
         hotel.setNearestStation(rs.getString("nearest_station"));
@@ -46,7 +47,7 @@ public class HotelRepository {
                 SELECT 
                 id,area_name,hotel_name,address,nearest_station,price,parking
                 FROM hotels
-                WHERE price <= 10000
+                WHERE price <= :price
                 ;
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("price",price);
